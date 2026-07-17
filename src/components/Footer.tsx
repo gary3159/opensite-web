@@ -42,9 +42,6 @@ export function Footer() {
               專為香港裝修 / 建築行業而設嘅工程項目管理 App。
               報價、材料、進度、成本，一手掌握。
             </p>
-            <p className="mt-6 text-xs text-fg-muted">
-              📍 香港 · Firebase: opensystem-857b2
-            </p>
           </div>
 
           {cols.map((c) => (

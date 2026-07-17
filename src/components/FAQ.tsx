@@ -24,10 +24,6 @@ const faqs = [
     q: "我嘅客戶唔用 Opensite 都可以睇進度嗎？",
     a: "可以。你可以將報價單、進度更新用 PDF / 連結分享俾客戶，客戶唔需要安裝 App 都睇到。",
   },
-  {
-    q: "同 OpenVan 有咩關係？",
-    a: "OpenVan 係姊妹產品 — 專做 van rental 同物流配送。Opensite v2 會直接整合 OpenVan 嘅物流網絡，落材料單之後可以即時預約送貨到工地，一條龍搞掂。",
-  },
 ];
 
 export function FAQ() {
