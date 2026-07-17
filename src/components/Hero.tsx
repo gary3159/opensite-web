@@ -1,161 +1,199 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Apple, Play } from "lucide-react";
+import { ArrowRight, Apple, Play, Sparkles, Truck } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-      {/* Gradient + grid backdrop */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{ background: "var(--gradient-hero)" }}
-        aria-hidden
-      />
+    <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
+      {/* Sky-blue mesh background */}
+      <div className="absolute inset-0 -z-10 bg-mesh" aria-hidden />
       <div className="absolute inset-0 -z-10 bg-grid" aria-hidden />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-card/60 backdrop-blur px-3 py-1 text-xs text-fg-soft">
-          <Sparkles className="h-3.5 w-3.5 text-brand" />
-          <span>AI-native site builder · Now in public beta</span>
-          <ArrowRight className="h-3.5 w-3.5 text-fg-muted" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left — copy */}
+          <div className="lg:col-span-7">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/70 backdrop-blur px-3 py-1 text-xs text-brand-strong">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span className="font-medium">本地 Beta · 香港裝修行業</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-fg">
+              由報價到完工，
+              <br />
+              <span className="gradient-text">裝修工程一手掌握。</span>
+            </h1>
+
+            {/* Subhead */}
+            <p className="mt-6 text-lg text-fg-soft leading-relaxed max-w-xl">
+              報價、材料、進度、成本 — 四個步驟一個 App 搞掂。
+              老闆睇實盤數、師傅更新進度、業主追蹤工程，唔再靠 WhatsApp
+              傳嚟傳去。
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="#download"
+                className="group inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-brand hover:bg-brand-strong text-white font-medium shadow-lg shadow-brand/25 transition-all hover:shadow-xl hover:shadow-brand/30"
+              >
+                免費下載 App
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="#workflow"
+                className="inline-flex items-center justify-center h-12 px-6 rounded-full border border-brand/20 bg-white/70 backdrop-blur hover:bg-white text-fg transition-colors"
+              >
+                睇下點運作
+              </Link>
+            </div>
+
+            {/* Trust strip */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href="#download"
+                className="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-fg text-white hover:bg-gray-800 transition-colors"
+                aria-label="App Store 下載"
+              >
+                <Apple className="h-6 w-6" />
+                <div className="text-left leading-tight">
+                  <div className="text-[10px] opacity-80">Download on the</div>
+                  <div className="text-sm font-semibold">App Store</div>
+                </div>
+              </Link>
+              <Link
+                href="#download"
+                className="inline-flex items-center gap-2 h-11 px-4 rounded-xl border border-brand/20 bg-white/70 backdrop-blur hover:bg-white text-fg transition-colors"
+                aria-label="Google Play 下載"
+              >
+                <Play className="h-5 w-5 text-brand" fill="currentColor" />
+                <div className="text-left leading-tight">
+                  <div className="text-[10px] text-fg-muted">GET IT ON</div>
+                  <div className="text-sm font-semibold">Google Play</div>
+                </div>
+              </Link>
+            </div>
+
+            {/* OpenVan bridge hint */}
+            <div className="mt-6 inline-flex items-center gap-2 text-xs text-fg-muted">
+              <Truck className="h-3.5 w-3.5 text-brand" />
+              <span>
+                v2 新功能：材料直送工地 — 透過 OpenVan 物流平台
+              </span>
+            </div>
+          </div>
+
+          {/* Right — phone preview */}
+          <div className="lg:col-span-5">
+            <HeroPhonePreview />
+          </div>
         </div>
-
-        {/* Headline */}
-        <h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-fg">
-          Build your site <br className="hidden sm:block" />
-          with{" "}
-          <span className="gradient-text">AI, not weekends.</span>
-        </h1>
-
-        {/* Subhead */}
-        <p className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl text-fg-soft leading-relaxed">
-          Opensite turns a one-line brief into a launched business website —
-          design, copy, SEO, and growth tools wired up automatically.{" "}
-          <span className="text-fg">On iPhone, Android, and the web.</span>
-        </p>
-
-        {/* CTAs */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link
-            href="#download"
-            className="group inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-fg text-bg font-medium hover:bg-fg-soft transition-colors"
-          >
-            Get the app
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <Link
-            href="#showcase"
-            className="inline-flex items-center justify-center h-12 px-6 rounded-full border border-border bg-bg-card/40 hover:bg-bg-elevated text-fg transition-colors"
-          >
-            See it in action
-          </Link>
-        </div>
-
-        {/* Trust strip — store badges */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <StoreBadge platform="ios" />
-          <StoreBadge platform="android" />
-          <span className="text-xs text-fg-muted">
-            4.9 ★ · 12k+ creators on iOS &amp; Android
-          </span>
-        </div>
-
-        {/* Hero visual — phone preview placeholder */}
-        <HeroPreview />
       </div>
     </section>
   );
 }
 
-function StoreBadge({
-  platform,
-}: {
-  platform: "ios" | "android";
-}) {
-  const Icon = platform === "ios" ? Apple : Play;
-  const top = platform === "ios" ? "Download on the" : "GET IT ON";
-  const bottom = platform === "ios" ? "App Store" : "Google Play";
+function HeroPhonePreview() {
   return (
-    <Link
-      href="#download"
-      className="inline-flex items-center gap-3 h-12 px-4 rounded-xl border border-border bg-bg-card/60 hover:bg-bg-elevated transition-colors"
-      aria-label={`Download on ${bottom}`}
-    >
-      <Icon className="h-6 w-6 text-fg" />
-      <div className="text-left leading-tight">
-        <div className="text-[10px] uppercase tracking-wide text-fg-muted">
-          {top}
+    <div className="relative mx-auto max-w-sm">
+      {/* Floating glass cards behind phone */}
+      <div className="absolute -top-4 -left-8 glass rounded-2xl p-4 shadow-xl animate-float hidden sm:block">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl bg-success/15 flex items-center justify-center">
+            <span className="text-success text-lg">✓</span>
+          </div>
+          <div>
+            <div className="text-xs text-fg-muted">已發送</div>
+            <div className="text-sm font-semibold text-fg">陳先生 · 3房2廳</div>
+          </div>
         </div>
-        <div className="text-sm font-medium text-fg">{bottom}</div>
       </div>
-    </Link>
-  );
-}
 
-function HeroPreview() {
-  // Stylised phone preview built in pure HTML/CSS — no external image
-  return (
-    <div className="relative mt-16 sm:mt-20 mx-auto max-w-5xl">
-      {/* Glow under */}
-      <div
-        className="absolute inset-x-0 -bottom-10 h-40 -z-10"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 100% at 50% 50%, var(--brand-glow), transparent 70%)",
-        }}
-        aria-hidden
-      />
-
-      {/* Browser/device frame */}
-      <div className="rounded-2xl border border-border bg-bg-card overflow-hidden shadow-2xl shadow-brand/5">
-        {/* Window chrome */}
-        <div className="flex items-center gap-2 px-4 h-10 border-b border-border-soft bg-bg-soft">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <div className="ml-4 flex-1 h-6 rounded-md bg-bg-elevated flex items-center px-3 text-[11px] text-fg-muted font-mono">
-            opensite.app/preview/coffee-roasters
+      <div className="absolute -bottom-4 -right-8 glass rounded-2xl p-4 shadow-xl animate-float-delayed hidden sm:block">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl bg-brand-tint flex items-center justify-center">
+            <span className="text-brand text-lg font-bold">$</span>
+          </div>
+          <div>
+            <div className="text-xs text-fg-muted">本期成本</div>
+            <div className="text-sm font-semibold text-fg">HK$ 128,450</div>
           </div>
         </div>
+      </div>
 
-        {/* Faux site */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_280px]">
-          <div className="p-6 sm:p-8 space-y-5">
-            <div className="flex items-center gap-2">
-              <span className="h-6 w-6 rounded-md bg-gradient-to-br from-brand to-accent" />
-              <span className="text-sm font-medium text-fg">
-                Highland Roasters
-              </span>
-            </div>
-            <div className="space-y-2">
-              <div className="h-3 w-3/4 rounded bg-fg/15" />
-              <div className="h-3 w-2/3 rounded bg-fg/10" />
-              <div className="h-7 w-1/2 rounded mt-4 bg-gradient-to-r from-brand to-accent" />
-            </div>
-            <div className="grid grid-cols-3 gap-2 pt-2">
-              <div className="aspect-square rounded-md bg-bg-elevated border border-border-soft" />
-              <div className="aspect-square rounded-md bg-bg-elevated border border-border-soft" />
-              <div className="aspect-square rounded-md bg-bg-elevated border border-border-soft" />
+      {/* Phone frame */}
+      <div className="phone-frame">
+        <div className="phone-screen">
+          {/* Status bar */}
+          <div className="flex items-center justify-between px-6 pt-3 pb-2 text-[10px] text-fg-muted">
+            <span className="font-medium">9:41</span>
+            <div className="flex items-center gap-1">
+              <span>●●●</span>
+              <span>100%</span>
             </div>
           </div>
 
-          {/* Side panel — 'AI building' indicator */}
-          <div className="border-t md:border-t-0 md:border-l border-border-soft bg-bg-soft p-4 space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inset-0 rounded-full bg-brand animate-ping opacity-75" />
-                <span className="relative h-2 w-2 rounded-full bg-brand" />
-              </span>
-              <span className="text-[11px] uppercase tracking-wide text-fg-muted font-mono">
-                AI · building
-              </span>
+          {/* App content */}
+          <div className="px-5 pb-6">
+            {/* App bar */}
+            <div className="flex items-center justify-between py-3">
+              <div>
+                <div className="text-xs text-fg-muted">下午好</div>
+                <div className="text-lg font-semibold text-fg">陳師傅</div>
+              </div>
+              <div className="h-9 w-9 rounded-full bg-brand-tint flex items-center justify-center text-brand font-semibold">
+                陳
+              </div>
             </div>
-            <div className="space-y-2">
-              <AgentRow label="Layout" status="done" />
-              <AgentRow label="Copywriting" status="done" />
-              <AgentRow label="SEO & AEO" status="active" />
-              <AgentRow label="Images" status="queued" />
-              <AgentRow label="Launch" status="queued" />
+
+            {/* Active project card */}
+            <div className="rounded-2xl bg-gradient-to-br from-brand to-brand-strong text-white p-4 shadow-lg shadow-brand/30">
+              <div className="flex items-center justify-between">
+                <span className="text-xs opacity-90">進行中 · 2</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 backdrop-blur">
+                  60%
+                </span>
+              </div>
+              <div className="mt-3 text-base font-semibold">
+                將軍澳 · 3房2廳裝修
+              </div>
+              <div className="text-xs opacity-90 mt-1">
+                預算 HK$ 480,000 · 預計 11 月完工
+              </div>
+              <div className="mt-3 h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <div className="h-full w-[60%] bg-white rounded-full" />
+              </div>
+            </div>
+
+            {/* Status filter tabs */}
+            <div className="mt-5 flex gap-2 overflow-x-auto">
+              <PillTab label="全部" active />
+              <PillTab label="報價中" badge="3" />
+              <PillTab label="進行中" badge="2" />
+              <PillTab label="已完成" />
+            </div>
+
+            {/* Project rows */}
+            <div className="mt-4 space-y-3">
+              <ProjectRow
+                name="天后 · 全屋翻新"
+                status="進行中"
+                statusColor="brand"
+                progress={75}
+              />
+              <ProjectRow
+                name="北角 · 廁所翻新"
+                status="報價中"
+                statusColor="orange"
+                progress={0}
+              />
+              <ProjectRow
+                name="中環 · 辦公室裝修"
+                status="已完成"
+                statusColor="success"
+                progress={100}
+              />
             </div>
           </div>
         </div>
@@ -164,27 +202,71 @@ function HeroPreview() {
   );
 }
 
-function AgentRow({
+function PillTab({
   label,
-  status,
+  active,
+  badge,
 }: {
   label: string;
-  status: "done" | "active" | "queued";
+  active?: boolean;
+  badge?: string;
 }) {
   return (
-    <div className="flex items-center justify-between text-xs">
-      <span className="text-fg-soft">{label}</span>
-      <span
-        className={
-          status === "done"
-            ? "text-success"
-            : status === "active"
-              ? "text-brand"
-              : "text-fg-muted"
-        }
-      >
-        {status === "done" ? "✓" : status === "active" ? "●" : "○"}
-      </span>
+    <div
+      className={`flex-shrink-0 inline-flex items-center gap-1.5 h-7 px-3 rounded-full text-xs font-medium transition-colors ${
+        active
+          ? "bg-brand text-white"
+          : "bg-brand-tint text-brand-strong"
+      }`}
+    >
+      {label}
+      {badge && (
+        <span
+          className={`px-1.5 rounded-full text-[10px] ${
+            active ? "bg-white/25" : "bg-white"
+          }`}
+        >
+          {badge}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function ProjectRow({
+  name,
+  status,
+  statusColor,
+  progress,
+}: {
+  name: string;
+  status: string;
+  statusColor: "brand" | "orange" | "success";
+  progress: number;
+}) {
+  const colors = {
+    brand: "bg-brand-tint text-brand-strong",
+    orange: "bg-orange/15 text-orange",
+    success: "bg-success/15 text-success",
+  };
+  return (
+    <div className="rounded-xl bg-white border border-brand/10 p-3">
+      <div className="flex items-center justify-between">
+        <div className="text-sm font-medium text-fg">{name}</div>
+        <span
+          className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${colors[statusColor]}`}
+        >
+          {status}
+        </span>
+      </div>
+      <div className="mt-2 h-1 rounded-full bg-brand-tint overflow-hidden">
+        <div
+          className={`h-full ${
+            progress === 100 ? "bg-success" : "bg-brand"
+          } rounded-full`}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   );
 }

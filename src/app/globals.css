@@ -1,32 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette — electric cyan + deep navy (刻意避開 OpenSite AI 嘅 orange，避免撞色) */
-  --bg: #0a0b14;
-  --bg-soft: #11131f;
-  --bg-card: #161826;
-  --bg-elevated: #1d2033;
-  --border: #2a2e44;
-  --border-soft: #1f2235;
+  /* Brand: Sky Blue (#0091E6) + glassmorphism per OpenSite Android theme */
+  --bg: #ffffff;
+  --bg-soft: #f7fafc;
+  --bg-mesh-from: #ffffff;
+  --bg-mesh-mid: #e3f2fd;        /* sky-50 */
+  --bg-mesh-to: #bbdefb;          /* sky-100 */
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-elevated: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(0, 145, 230, 0.12);
+  --glass-border-strong: rgba(0, 145, 230, 0.22);
 
-  --fg: #f5f6ff;
-  --fg-soft: #b8bccd;
-  --fg-muted: #6b7088;
+  --fg: #1a1a1a;                  /* gray-900 */
+  --fg-soft: #424242;             /* gray-700 */
+  --fg-muted: #616161;            /* gray-600 */
 
-  --brand: #00d4ff;        /* electric cyan — primary accent */
-  --brand-soft: #4ddeff;
-  --brand-glow: rgba(0, 212, 255, 0.18);
+  --brand: #0091e6;               /* sky-500 — primary */
+  --brand-strong: #0070b8;        /* sky-600 — hover */
+  --brand-soft: #42a5f5;          /* sky-400 */
+  --brand-tint: #e3f2fd;          /* sky-50 — backgrounds */
+  --brand-glow: rgba(0, 145, 230, 0.20);
 
-  --accent: #a78bfa;       /* violet — secondary accent */
-  --success: #34d399;
-  --warning: #fbbf24;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --orange: #f97316;
+  --danger: #ef4444;
 
-  --gradient-hero: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    rgba(0, 212, 255, 0.18),
-    rgba(167, 139, 250, 0.10) 40%,
-    transparent 70%
-  );
+  /* Mesh gradient for hero */
+  --gradient-mesh:
+    radial-gradient(at 18% 22%, rgba(0, 145, 230, 0.18) 0px, transparent 50%),
+    radial-gradient(at 82% 18%, rgba(66, 165, 245, 0.16) 0px, transparent 55%),
+    radial-gradient(at 95% 78%, rgba(187, 222, 251, 0.55) 0px, transparent 50%),
+    radial-gradient(at 12% 92%, rgba(227, 242, 253, 0.7) 0px, transparent 55%);
 }
 
 @theme inline {
@@ -34,110 +40,136 @@
   --color-bg-soft: var(--bg-soft);
   --color-bg-card: var(--bg-card);
   --color-bg-elevated: var(--bg-elevated);
-  --color-border: var(--border);
-  --color-border-soft: var(--border-soft);
   --color-fg: var(--fg);
   --color-fg-soft: var(--fg-soft);
   --color-fg-muted: var(--fg-muted);
   --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
   --color-brand-soft: var(--brand-soft);
-  --color-accent: var(--accent);
+  --color-brand-tint: var(--brand-tint);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-orange: var(--orange);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 * {
-  border-color: var(--border);
+  border-color: rgba(0, 145, 230, 0.12);
 }
 
 html,
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
+  font-family:
+    var(--font-geist-sans),
+    "PingFang HK",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Selection */
 ::selection {
   background: var(--brand);
-  color: var(--bg);
+  color: white;
 }
 
-/* Scrollbar (subtle, modern) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--bg-soft);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-elevated);
+  background: rgba(0, 145, 230, 0.25);
   border-radius: 8px;
-  border: 2px solid var(--bg);
+  border: 2px solid var(--bg-soft);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border);
+  background: rgba(0, 145, 230, 0.45);
 }
 
-/* Brand glow utility */
-.brand-glow {
-  text-shadow: 0 0 30px var(--brand-glow);
+/* Sky-blue mesh background — matches Android blueprint */
+.bg-mesh {
+  background: var(--gradient-mesh);
+  background-color: var(--bg);
 }
 
+/* Glassmorphism card — matches Android theme notes */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: var(--bg-elevated);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border-strong);
+}
+
+/* Gradient text — sky-blue to deeper blue */
 .gradient-text {
-  background: linear-gradient(120deg, var(--brand) 0%, var(--accent) 100%);
+  background: linear-gradient(120deg, var(--brand) 0%, var(--brand-strong) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Subtle grid background for hero/section panels */
+/* Subtle grid for technical-feel sections */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, rgba(0, 145, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 145, 230, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, transparent 100%);
 }
 
-/* Animated gradient border for primary CTA */
-.gradient-border {
-  position: relative;
-  background: var(--bg-card);
-  border-radius: 9999px;
+/* Subtle floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(120deg, var(--brand), var(--accent));
-  z-index: -1;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-}
-.gradient-border:hover::before {
-  opacity: 1;
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
-/* Marquee for logo strip */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
-.animate-marquee {
-  animation: marquee 30s linear infinite;
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out 1s infinite;
+}
+
+/* Phone-frame container */
+.phone-frame {
+  position: relative;
+  border-radius: 36px;
+  background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+  padding: 10px;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 145, 230, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3);
+}
+
+.phone-screen {
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--bg);
 }

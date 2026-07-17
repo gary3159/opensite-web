@@ -19,35 +19,33 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://opensite-web.vercel
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Opensite — Build your site with AI",
+    default: "Opensite — 香港裝修工程管理 App",
     template: "%s · Opensite",
   },
   description:
-    "Opensite is the AI-native platform that builds your business website, content, and growth engine — in minutes. Available on iOS, Android, and Web.",
+    "Opensite 幫你由報價到完工，一手掌握裝修項目。報價、材料、進度、成本 4 大模塊，手機一 App 搞掂。",
   keywords: [
     "Opensite",
-    "AI website builder",
-    "AI app",
-    "site generator",
-    "business website",
-    "OpenSite app",
+    "裝修 App",
+    "工程管理",
+    "裝修報價",
+    "裝修進度",
+    "OpenSite 香港",
   ],
   authors: [{ name: "Opensite" }],
   creator: "Opensite",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "zh_HK",
     url: siteUrl,
-    title: "Opensite — Build your site with AI",
-    description:
-      "AI-native platform to build your business website, content, and growth engine in minutes.",
+    title: "Opensite — 香港裝修工程管理 App",
+    description: "由報價到完工，一手掌握裝修項目。",
     siteName: "Opensite",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Opensite — Build your site with AI",
-    description:
-      "AI-native platform to build your business website, content, and growth engine in minutes.",
+    title: "Opensite — 香港裝修工程管理 App",
+    description: "由報價到完工，一手掌握裝修項目。",
   },
   icons: {
     icon: "/favicon.ico",
@@ -61,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="zh-HK"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-bg text-fg flex flex-col">
