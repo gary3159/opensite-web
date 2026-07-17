@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Apple, Play, Sparkles, Truck } from "lucide-react";
+import { ArrowRight, Apple, Play } from "lucide-react";
 
 export function Hero() {
   return (
@@ -11,13 +11,7 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left — copy */}
-          <div className="lg:col-span-7">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/70 backdrop-blur px-3 py-1 text-xs text-brand-strong">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span className="font-medium">本地 Beta · 香港裝修行業</span>
-            </div>
-
+          <div>
             {/* Headline */}
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-fg">
               由報價到完工，
@@ -76,13 +70,6 @@ export function Hero() {
               </a>
             </div>
 
-            {/* OpenVan bridge hint */}
-            <div className="mt-6 inline-flex items-center gap-2 text-xs text-fg-muted">
-              <Truck className="h-3.5 w-3.5 text-brand" />
-              <span>
-                v2 新功能：材料直送工地 — 透過 OpenVan 物流平台
-              </span>
-            </div>
           </div>
 
           {/* Right — phone preview */}
