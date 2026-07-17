@@ -11,9 +11,9 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left — copy */}
-          <div>
+          <div className="lg:col-span-7">
             {/* Headline */}
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-fg">
+            <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.75rem,4.5vw,4rem)] font-semibold tracking-tight leading-[1.1] text-fg">
               由報價到完工，
               <br />
               <span className="gradient-text">裝修工程一手掌握。</span>
