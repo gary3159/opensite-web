@@ -98,8 +98,8 @@ export function Hero() {
 function HeroPhonePreview() {
   return (
     <div className="relative mx-auto max-w-sm">
-      {/* Floating glass cards behind phone */}
-      <div className="absolute -top-4 -left-8 glass rounded-2xl p-4 shadow-xl animate-float hidden sm:block">
+      {/* Floating glass cards in front of phone — z-20 puts them on top */}
+      <div className="absolute -top-4 -left-8 z-20 glass rounded-2xl p-4 shadow-xl animate-float hidden sm:block">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-xl bg-success/15 flex items-center justify-center">
             <span className="text-success text-lg">✓</span>
@@ -111,7 +111,7 @@ function HeroPhonePreview() {
         </div>
       </div>
 
-      <div className="absolute -bottom-4 -right-8 glass rounded-2xl p-4 shadow-xl animate-float-delayed hidden sm:block">
+      <div className="absolute -bottom-4 -right-8 z-20 glass rounded-2xl p-4 shadow-xl animate-float-delayed hidden sm:block">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-xl bg-brand-tint flex items-center justify-center">
             <span className="text-brand text-lg font-bold">$</span>
@@ -123,8 +123,8 @@ function HeroPhonePreview() {
         </div>
       </div>
 
-      {/* Phone frame */}
-      <div className="phone-frame">
+      {/* Phone frame — z-10 keeps it below the floating cards but above the background */}
+      <div className="phone-frame relative z-10">
         <div className="phone-screen">
           {/* Status bar */}
           <div className="flex items-center justify-between px-6 pt-3 pb-2 text-[10px] text-fg-muted">
