@@ -62,17 +62,18 @@ export function Hero() {
                   <div className="text-sm font-semibold">App Store</div>
                 </div>
               </Link>
-              <Link
-                href="#download"
+              <a
+                href="/api/download/apk"
+                download="opensite-android-v0.1.0.apk"
                 className="inline-flex items-center gap-2 h-11 px-4 rounded-xl border border-brand/20 bg-white/70 backdrop-blur hover:bg-white text-fg transition-colors"
-                aria-label="Google Play 下載"
+                aria-label="直接下載 Android APK"
               >
                 <Play className="h-5 w-5 text-brand" fill="currentColor" />
                 <div className="text-left leading-tight">
                   <div className="text-[10px] text-fg-muted">GET IT ON</div>
                   <div className="text-sm font-semibold">Google Play</div>
                 </div>
-              </Link>
+              </a>
             </div>
 
             {/* OpenVan bridge hint */}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Apple, Play, QrCode, Smartphone, Bell } from "lucide-react";
+import { Apple, Play, QrCode, Smartphone, Bell, Download as DownloadIcon } from "lucide-react";
 
 export function Download() {
   return (
@@ -41,6 +41,19 @@ export function Download() {
                   <div className="text-base font-semibold">App Store</div>
                 </div>
               </Link>
+              <a
+                href="/api/download/apk"
+                download="opensite-android-v0.1.0.apk"
+                className="inline-flex items-center gap-3 h-14 px-5 rounded-xl border border-brand/30 bg-brand-tint hover:bg-brand hover:text-white text-brand-strong transition-colors group"
+              >
+                <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
+                <div className="text-left leading-tight">
+                  <div className="text-[10px] opacity-80 uppercase tracking-wide">
+                    直接下載 APK
+                  </div>
+                  <div className="text-base font-semibold">v0.1.0 · 22.3 MB</div>
+                </div>
+              </a>
               <Link
                 href="#"
                 className="inline-flex items-center gap-3 h-14 px-5 rounded-xl border border-brand/20 bg-white hover:bg-brand-tint transition-colors"
