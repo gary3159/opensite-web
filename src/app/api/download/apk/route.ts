@@ -66,11 +66,22 @@ export async function GET() {
   }
 
   if (!upstream.ok) {
+    // User-friendly plain-text error with explicit attachment header
+    // so browsers save it as a .txt file (not auto-rendered in-tab).
     return new Response(
-      `Failed to fetch APK: ${upstream.status} ${upstream.statusText}\n\n` +
-        `Token source: ${token ? "found" : "missing — set GITHUB_RELEASE_TOKEN"}\n` +
-        `Asset: ${APAC_DOWNLOAD}`,
-      { status: 502 },
+      `OpenSite APK temporarily unavailable.\n\n` +
+        `Status: ${upstream.status} ${upstream.statusText}\n` +
+        `Token: ${token ? "configured but fetch failed" : "GITHUB_RELEASE_TOKEN not set on Vercel"}\n\n` +
+        `If you're seeing this, the server admin needs to set the\n` +
+        `GITHUB_RELEASE_TOKEN env var in Vercel project settings.\n`,
+      {
+        status: 502,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Content-Disposition":
+            'attachment; filename="opensite-download-error.txt"',
+        },
+      },
     );
   }
 
